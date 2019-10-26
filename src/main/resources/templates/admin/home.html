@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>admin panel</title>
+</head>
+
+<body>
+<div>
+
+    <form th:action="@{/logout}" method="get">
+        <button name="registration" type="Submit">Logout</button>
+    </form>
+
+    <div>
+        <span th:utext="'Your id: ' + ${userObject.getId()}"></span>
+    </div>
+
+    <p th:utext="${adminMessage}"></p>
+
+</div>
+</body>
+</html>
