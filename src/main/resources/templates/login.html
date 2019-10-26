@@ -3,18 +3,16 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>pictures rating app</title>
+    <title>login</title>
+    <link href="css/login.css" rel="stylesheet">
 </head>
 
-<body>
-<form th:action="@{/registration}" method="get">
-    <button type="Submit">Registration Page</button>
-</form>
+<body bgcolor="#EFEFE3">
 
 <div>
-    <form th:action="@{/login}" method="POST" class="form-signin">
-        <h3 th:text="Welcome"></h3>
-        <br/>
+    <img th:src="@{/images/logocr.png}">
+    <form th:action="@{/login}" method="POST">
+        <h3>rate my shibe</h3>
 
         <input type="text" id="name" name="name" th:placeholder="Username"/> <br/>
         <input type="password" id="password" name="password" th:placeholder="Password"/> <br/>
@@ -22,7 +20,10 @@
         <div th:if="${param.error}">
             <p style="font-size: medium; color: #FF1C19;">Username or Password invalid, please try again</p>
         </div>
-        <button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+        <button name="Submit" value="Login" type="Submit" th:text="Login" th:width="100"></button>
+    </form>
+    <form th:action="@{/registration}" method="get">
+        <button type="Submit" th:width="100">Register</button>
     </form>
 </div>
 </body>
