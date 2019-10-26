@@ -40,7 +40,7 @@ public class UserServiceTest {
 
         Mockito.when(mockUserRepository.save(any()))
                 .thenReturn(user);
-        Mockito.when(mockUserRepository.findByName(anyString()))
+        Mockito.when(mockUserRepository.findByEmail(anyString()))
                 .thenReturn(user);
     }
 
