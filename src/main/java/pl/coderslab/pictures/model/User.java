@@ -26,6 +26,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", unique = true)
+    @Length(min = 3, message = "*Your username must have at least 3 characters")
+    @NotEmpty(message = "*Please provide your username")
+    private String name;
+
     @Column(name = "email")
     @Email(message = "*Please provide a valid Email")
     @NotEmpty(message = "*Please provide an email")
@@ -35,11 +40,6 @@ public class User {
     @Length(min = 5, message = "*Your password must have at least 5 characters")
     @NotEmpty(message = "*Please provide your password")
     private String password;
-
-    @Column(name = "name")
-    @Length(min = 3, message = "*Your username must have at least 3 characters")
-    @NotEmpty(message = "*Please provide your username")
-    private String name;
 
     @Column(name = "active")
     private int active;
