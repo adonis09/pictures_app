@@ -3,6 +3,7 @@ package pl.coderslab.pictures.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import pl.coderslab.pictures.service.UserService;
 
 import javax.validation.Valid;
 
+@Controller
 public class LoginController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class LoginController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        User userNameExists = userService.findUserByName(user.getEmail());
+        User userNameExists = userService.findUserByName(user.getName());
         User userEmailExists = userService.findUserByEmail(user.getEmail());
         if (userNameExists != null) {
             bindingResult
@@ -65,8 +67,8 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+        modelAndView.addObject("userObject", user);
+        modelAndView.addObject("adminMessage", "You are user with Admin Role");
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }
