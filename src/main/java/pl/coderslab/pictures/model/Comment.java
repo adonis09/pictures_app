@@ -8,8 +8,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -45,6 +45,6 @@ public class Comment {
     private Comment parentComment;
 
     @OneToMany(mappedBy = "parentComment")
-    private List<Comment> childComments = new ArrayList<>();
+    private Set<Comment> childComments = new HashSet<>();
 
 }

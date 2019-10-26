@@ -9,8 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -49,9 +48,9 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "user")
-    private List<Picture> pictures = new ArrayList<>();
+    private Set<Picture> pictures = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Comment> comments = new ArrayList<>();
+    private Set<Comment> comments = new HashSet<>();
 
 }

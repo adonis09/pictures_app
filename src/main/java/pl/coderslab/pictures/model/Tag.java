@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -29,6 +29,6 @@ public class Tag {
     @JoinTable(name = "picture_tag",
             joinColumns = @JoinColumn(name = "tag_id"),
             inverseJoinColumns = @JoinColumn(name = "picture_id"))
-    private List<Picture> pictures = new ArrayList<>();
+    private Set<Picture> pictures = new HashSet<>();
 
 }

@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -54,12 +54,12 @@ public class Picture {
     }
 
     @OneToMany(mappedBy = "picture")
-    private List<Mark> marks = new ArrayList<>();
+    private Set<Mark> marks = new HashSet<>();
 
     @OneToMany(mappedBy = "picture")
-    private List<Comment> comments = new ArrayList<>();
+    private Set<Comment> comments = new HashSet<>();
 
     @ManyToMany(mappedBy = "pictures")
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
 
 }
